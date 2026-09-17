@@ -97,10 +97,19 @@ ax[1].set(title='Average by Gender', ylabel='Average', xlabel='Gender')
 ax[2].bar(meanHometown.index, meanHometown.values, color='Green')
 ax[2].set(ylim=[60, 70])
 ax[2].set(title='Average by Hometown', ylabel='Average', xlabel='Hometown')
+````
 
+And lastly, for part 3 of the problem, it is to write three concise statements to identify the highest sample mean for each feature under the figure.
+````
 fig.text(0.7,0,'Average by Hometown shows that the highest average comes from Luzon')
 fig.text(0.04,0,'Average by Track shows that Communication had the overall highest average.')
 fig.text(0.37,0,'Average by Gender shows men have a slightly higher average than women.')
 ````
 
 
+
+
+ReadMe File Version History
+
+September 17, 2026 - Final
+September 17, 2026 - Final Final

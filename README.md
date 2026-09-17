@@ -55,3 +55,52 @@ meanTrack = ECE.groupby('Track')['Average'].mean()
 meanGender = ECE.groupby('Gender')['Average'].mean()
 meanHometown = ECE.groupby('Hometown')['Average'].mean()
 ````
+
+For part 2 of the problem, the goal was to display into three unique summary tables and is given by the following code.
+````
+print(meanTrack, '\n')
+
+print(meanGender, '\n')
+
+print(meanHometown, '\n')
+````
+
+For part 3 of the problem, the plan is to create three bar graphs for each category. Each Bar graph is under the same plot under different subplots.
+````
+fig, ax = plt.subplots(1, 3, figsize=(20,8))
+````
+Afterwards, each code a bar graph is created from the results of part 2, with the subcategories serving as the index while the resulting average for each is the value. 
+As an example, only the graph for track will be shown for now.
+````
+ax[0].bar(meanTrack.index, meanTrack.values, color = 'Red')
+````
+In addition to that, titles and labels are added to denote each bar graph and their axis. 
+````
+ax[0].set(title='Average by Track', ylabel='Average', xlabel='Track')
+````
+And to further clarify the differences of the data the upper and lower limit of the y-axis is changed to a range of only 60-70 to show the differences much clearer.
+````
+ax[0].set(ylim=[60, 70])
+````
+
+
+Hence the code for all three bar graphs is as follows.
+````
+ax[0].bar(meanTrack.index, meanTrack.values, color = 'Red')
+ax[0].set(ylim=[60, 70])
+ax[0].set(title='Average by Track', ylabel='Average', xlabel='Track')
+
+ax[1].bar(meanGender.index, meanGender.values, color='Black')
+ax[1].set(ylim=[60, 70])
+ax[1].set(title='Average by Gender', ylabel='Average', xlabel='Gender')
+
+ax[2].bar(meanHometown.index, meanHometown.values, color='Green')
+ax[2].set(ylim=[60, 70])
+ax[2].set(title='Average by Hometown', ylabel='Average', xlabel='Hometown')
+
+fig.text(0.7,0,'Average by Hometown shows that the highest average comes from Luzon')
+fig.text(0.04,0,'Average by Track shows that Communication had the overall highest average.')
+fig.text(0.37,0,'Average by Gender shows men have a slightly higher average than women.')
+````
+
+

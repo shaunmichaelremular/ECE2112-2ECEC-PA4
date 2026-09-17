@@ -3,3 +3,55 @@
 Made by Shaun Michael R. Remular
 
 This Repository contains the Programming Assignment 4 for the course "Advanced Computer Programming" S.Y. 2026-2027. This project covers Module 4 - Data Wrangling and Data Visualization, including three Python problems.
+
+## Objectives
+- Use Pandas and matplotlib.pyplot to search and visualize data.
+- Construct DataFrames to sift through and show specific data points
+- Manipulate the DataFrame into easily identifiable data points
+- Construct graphs to further simplify the process of data visualization
+- Summarize the results of data wrangling into easily understandable data
+
+code imports pandas as pd and matplotlib.pyplot as plt
+board2.xlsx is imported as a data set that will be used in the data wrangling and data visualization
+
+## A. Visayas Communication DataFrame
+The problem involves creating a DataFrame named VisComm that includes only people who are from Visayas and has communication as the track. Furthermore, the problem further specifies the problem into only including Name, Gender, Math, Electronics, and Average in the data frame
+
+The DataFrame was created as follows
+````
+VisComm = pd.DataFrame(ECE, columns = ['Name', 'Gender', 'Math', 'Electronics', 'Average']).loc[(ECE['Hometown']=='Visayas')&(ECE['Track']=='Communication')]
+VisComm
+````
+It then presents the data containing only those within does specific criteria.
+
+
+## B. Visayas Female DataFrame
+The part one of problem B involves creating another DataFrame called VisFemale that includes only people who are from Visayas and whose gender are female.
+
+The DataFrame was created as follows
+````
+VisFemale = pd.DataFrame(ECE, columns = ['Name', 'Track', 'GEAS','Electronics', 'Average']).loc[(ECE['Gender']=='Female')]
+VisFemale
+````
+
+Part two of problem B further specifies to only include those who have an average of above 60, without overwriting the original VisFemale
+
+The search was created as follows
+````
+VisFemale.loc[(VisFemale['Average']>60)]
+````
+
+## C. Category-Average Visualization
+This problem involves four different parts, but involves taken the average of different categories under track, gender, and hometown.
+1. For each feature, compute the mean of Average for every category using Pandas.
+2. Display the three summary tables.
+3. Create one figure containing three bar charts: mean Average by Track, by Gender, and by Hometown.
+4. Below the figure, write three concise statements identifying the category with the highest sample mean for each feature.
+
+For part 1 of problem C, the goal is to compute the mean of every category by grouping each individual component, connecting them to the average, and taking the mean.
+It is given by this code.
+````
+meanTrack = ECE.groupby('Track')['Average'].mean()
+meanGender = ECE.groupby('Gender')['Average'].mean()
+meanHometown = ECE.groupby('Hometown')['Average'].mean()
+````
